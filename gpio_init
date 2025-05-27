@@ -1,0 +1,20 @@
+#define GPIO_CLOCK_ENABLE(GPIOx)        
+    do {                                
+        RCC_APB2PeriphClockCmd(RCC_APB2Periph_##GPIOx, ENABLE); 
+    } while(0)
+
+// GPIO 初始化函数
+void GPIO_InitPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint32_t GPIO_Mode, uint32_t GPIO_Speed)
+{
+    // 使能对应的 GPIO 时钟
+    GPIO_CLOCK_ENABLE(GPIOx);
+
+    // 初始化结构体
+    GPIO_InitTypeDef GPIO_InitStructure;
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode;
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed;
+
+    // 执行 GPIO 初始化
+    GPIO_Init(GPIOx, &GPIO_InitStructure);
+}
