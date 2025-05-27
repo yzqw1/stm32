@@ -18,3 +18,5 @@ void GPIO_InitPin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, uint32_t GPIO_Mode, ui
     // 执行 GPIO 初始化
     GPIO_Init(GPIOx, &GPIO_InitStructure);
 }
+使用实列
+GPIO_InitPin(GPIOA, GPIO_Pin_0, GPIO_Mode_Out_PP, GPIO_Speed_50MHz);
